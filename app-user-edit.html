@@ -9,15 +9,15 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
+    <title>User Edit - Vuexy - Bootstrap HTML admin template</title>
     <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -31,9 +31,9 @@
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/dashboard-ecommerce.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/charts/chart-apex.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/pickers/form-flat-pickr.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/app-user.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -378,7 +378,7 @@
                     <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
                         </li>
-                        <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
+                        <li><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
                         </li>
                     </ul>
                 </li>
@@ -426,7 +426,7 @@
                         </li>
                         <li><a class="d-flex align-items-center" href="app-user-view.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">View</span></a>
                         </li>
-                        <li><a class="d-flex align-items-center" href="app-user-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
+                        <li class="active"><a class="d-flex align-items-center" href="app-user-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
                         </li>
                     </ul>
                 </li>
@@ -715,733 +715,475 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <!-- Dashboard Ecommerce Starts -->
-                <section id="dashboard-ecommerce">
-                    <div class="row match-height">
-                        <!-- Medal Card -->
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-                                    <h5>Congratulations 🎉 John!</h5>
-                                    <p class="card-text font-small-3">You have won gold medal</p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                        <a href="javascript:void(0);">$48.9k</a>
-                                    </h3>
-                                    <button type="button" class="btn btn-primary">View Sales</button>
-                                    <img src="app-assets/images/illustration/badge.svg" class="congratulation-medal" alt="Medal Pic" />
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Medal Card -->
-
-                        <!-- Statistics Card -->
-                        <div class="col-xl-8 col-md-6 col-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
-                                    <h4 class="card-title">Statistics</h4>
-                                    <div class="d-flex align-items-center">
-                                        <p class="card-text font-small-2 mr-25 mb-0">Updated 1 month ago</p>
+                <!-- users edit start -->
+                <section class="app-user-edit">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-pills" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                        <i data-feather="user"></i><span class="d-none d-sm-block">Account</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                        <i data-feather="info"></i><span class="d-none d-sm-block">Information</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center" id="social-tab" data-toggle="tab" href="#social" aria-controls="social" role="tab" aria-selected="false">
+                                        <i data-feather="share-2"></i><span class="d-none d-sm-block">Social</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!-- Account Tab starts -->
+                                <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
+                                    <!-- users edit media object start -->
+                                    <div class="media mb-2">
+                                        <img src="app-assets/images/avatars/7.png" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" height="90" width="90" />
+                                        <div class="media-body mt-50">
+                                            <h4>Eleanor Aguilar</h4>
+                                            <div class="col-12 d-flex mt-1 px-0">
+                                                <label class="btn btn-primary mr-75 mb-0" for="change-picture">
+                                                    <span class="d-none d-sm-block">Change</span>
+                                                    <input class="form-control" type="file" id="change-picture" hidden accept="image/png, image/jpeg, image/jpg" />
+                                                    <span class="d-block d-sm-none">
+                                                        <i class="mr-0" data-feather="edit"></i>
+                                                    </span>
+                                                </label>
+                                                <button class="btn btn-outline-secondary d-none d-sm-block">Remove</button>
+                                                <button class="btn btn-outline-secondary d-block d-sm-none">
+                                                    <i class="mr-0" data-feather="trash-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <!-- users edit media object ends -->
+                                    <!-- users edit account form start -->
+                                    <form class="form-validate">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="username">Username</label>
+                                                    <input type="text" class="form-control" placeholder="Username" value="eleanor.aguilar" name="username" id="username" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="name">Name</label>
+                                                    <input type="text" class="form-control" placeholder="Name" value="Eleanor Aguilar" name="name" id="name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="email">E-mail</label>
+                                                    <input type="email" class="form-control" placeholder="Email" value="eleanor.aguilar@gmail.com" name="email" id="email" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="status">Status</label>
+                                                    <select class="form-control" id="status">
+                                                        <option>Active</option>
+                                                        <option>Blocked</option>
+                                                        <option>Deactivated</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="role">Role</label>
+                                                    <select class="form-control" id="role">
+                                                        <option>Admin</option>
+                                                        <option>User</option>
+                                                        <option>Staff</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="company">Company</label>
+                                                    <input type="text" class="form-control" value="WinDon Technologies Pvt Ltd" placeholder="Company name" id="company" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="table-responsive border rounded mt-1">
+                                                    <h6 class="py-1 mx-1 mb-0 font-medium-2">
+                                                        <i data-feather="lock" class="font-medium-3 mr-25"></i>
+                                                        <span class="align-middle">Permission</span>
+                                                    </h6>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Read</th>
+                                                                <th>Write</th>
+                                                                <th>Create</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Admin</td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="admin-read" checked />
+                                                                        <label class="custom-control-label" for="admin-read"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="admin-write" />
+                                                                        <label class="custom-control-label" for="admin-write"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="admin-create" />
+                                                                        <label class="custom-control-label" for="admin-create"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="admin-delete" />
+                                                                        <label class="custom-control-label" for="admin-delete"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Staff</td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="staff-read" />
+                                                                        <label class="custom-control-label" for="staff-read"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="staff-write" checked />
+                                                                        <label class="custom-control-label" for="staff-write"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="staff-create" />
+                                                                        <label class="custom-control-label" for="staff-create"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="staff-delete" />
+                                                                        <label class="custom-control-label" for="staff-delete"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Author</td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="author-read" checked />
+                                                                        <label class="custom-control-label" for="author-read"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="author-write" />
+                                                                        <label class="custom-control-label" for="author-write"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="author-create" checked />
+                                                                        <label class="custom-control-label" for="author-create"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="author-delete" />
+                                                                        <label class="custom-control-label" for="author-delete"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Contributor</td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="contributor-read" />
+                                                                        <label class="custom-control-label" for="contributor-read"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="contributor-write" />
+                                                                        <label class="custom-control-label" for="contributor-write"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="contributor-create" />
+                                                                        <label class="custom-control-label" for="contributor-create"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="contributor-delete" />
+                                                                        <label class="custom-control-label" for="contributor-delete"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>User</td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="user-read" />
+                                                                        <label class="custom-control-label" for="user-read"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="user-create" />
+                                                                        <label class="custom-control-label" for="user-create"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="user-write" />
+                                                                        <label class="custom-control-label" for="user-write"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="user-delete" checked />
+                                                                        <label class="custom-control-label" for="user-delete"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                                                <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save Changes</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- users edit account form ends -->
                                 </div>
-                                <div class="card-body statistics-body">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-primary mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="trending-up" class="avatar-icon"></i>
+                                <!-- Account Tab ends -->
+
+                                <!-- Information Tab starts -->
+                                <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
+                                    <!-- users edit Info form start -->
+                                    <form class="form-validate">
+                                        <div class="row mt-1">
+                                            <div class="col-12">
+                                                <h4 class="mb-1">
+                                                    <i data-feather="user" class="font-medium-4 mr-25"></i>
+                                                    <span class="align-middle">Personal Information</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="birth">Birth date</label>
+                                                    <input id="birth" type="text" class="form-control birthdate-picker" name="dob" placeholder="YYYY-MM-DD" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="mobile">Mobile</label>
+                                                    <input id="mobile" type="text" class="form-control" value="&#43;6595895857" name="phone" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="website">Website</label>
+                                                    <input id="website" type="text" class="form-control" placeholder="Website here..." value="https://rowboat.com/insititious/Angelo" name="website" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="languages">Languages</label>
+                                                    <select id="languages" class="form-control">
+                                                        <option value="English">English</option>
+                                                        <option value="Spanish">Spanish</option>
+                                                        <option value="French" selected>French</option>
+                                                        <option value="Russian">Russian</option>
+                                                        <option value="German">German</option>
+                                                        <option value="Arabic">Arabic</option>
+                                                        <option value="Sanskrit">Sanskrit</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="d-block mb-1">Gender</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="male" name="gender" class="custom-control-input" />
+                                                        <label class="custom-control-label" for="male">Male</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="female" name="gender" class="custom-control-input" checked />
+                                                        <label class="custom-control-label" for="female">Female</label>
                                                     </div>
                                                 </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">230k</h4>
-                                                    <p class="card-text font-small-3 mb-0">Sales</p>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-info mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="user" class="avatar-icon"></i>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="d-block mb-1">Contact Options</label>
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="email-cb" checked />
+                                                        <label class="custom-control-label" for="email-cb">Email</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="message" checked />
+                                                        <label class="custom-control-label" for="message">Message</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" class="custom-control-input" id="phone" />
+                                                        <label class="custom-control-label" for="phone">Phone</label>
                                                     </div>
                                                 </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">8.549k</h4>
-                                                    <p class="card-text font-small-3 mb-0">Customers</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <h4 class="mb-1 mt-2">
+                                                    <i data-feather="map-pin" class="font-medium-4 mr-25"></i>
+                                                    <span class="align-middle">Address</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="address-1">Address Line 1</label>
+                                                    <input id="address-1" type="text" class="form-control" value="A-65, Belvedere Streets" name="address" />
                                                 </div>
                                             </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="address-2">Address Line 2</label>
+                                                    <input id="address-2" type="text" class="form-control" placeholder="T-78, Groove Street" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="postcode">Postcode</label>
+                                                    <input id="postcode" type="text" class="form-control" placeholder="597626" name="zip" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="city">City</label>
+                                                    <input id="city" type="text" class="form-control" value="New York" name="city" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="state">State</label>
+                                                    <input id="state" type="text" class="form-control" name="state" placeholder="Manhattan" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="country">Country</label>
+                                                    <input id="country" type="text" class="form-control" name="country" placeholder="United States" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                                                <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save Changes</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
                                         </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-danger mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                    </form>
+                                    <!-- users edit Info form ends -->
+                                </div>
+                                <!-- Information Tab ends -->
+
+                                <!-- Social Tab starts -->
+                                <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
+                                    <!-- users edit social form start -->
+                                    <form class="form-validate">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="twitter-input">Twitter</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon3">
+                                                            <i data-feather="twitter" class="font-medium-2"></i>
+                                                        </span>
                                                     </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">1.423k</h4>
-                                                    <p class="card-text font-small-3 mb-0">Products</p>
+                                                    <input id="twitter-input" type="text" class="form-control" value="https://www.twitter.com/adoptionism744" placeholder="https://www.twitter.com/" aria-describedby="basic-addon3" />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12">
-                                            <div class="media">
-                                                <div class="avatar bg-light-success mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="dollar-sign" class="avatar-icon"></i>
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="facebook-input">Facebook</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon4">
+                                                            <i data-feather="facebook" class="font-medium-2"></i>
+                                                        </span>
                                                     </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">$9745</h4>
-                                                    <p class="card-text font-small-3 mb-0">Revenue</p>
+                                                    <input id="facebook-input" type="text" class="form-control" value="https://www.facebook.com/adoptionism664" placeholder="https://www.facebook.com/" aria-describedby="basic-addon4" />
                                                 </div>
                                             </div>
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="instagram-input">Instagram</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon5">
+                                                            <i data-feather="instagram" class="font-medium-2"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input id="instagram-input" type="text" class="form-control" value="https://www.instagram.com/adopt-ionism744" placeholder="https://www.instagram.com/" aria-describedby="basic-addon5" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="github-input">Github</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon9">
+                                                            <i data-feather="github" class="font-medium-2"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input id="github-input" type="text" class="form-control" value="https://www.github.com/madop818" placeholder="https://www.github.com/" aria-describedby="basic-addon9" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="codepen-input">Codepen</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon12">
+                                                            <i data-feather="codepen" class="font-medium-2"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input id="codepen-input" type="text" class="form-control" value="https://www.codepen.com/adoptism243" placeholder="https://www.codepen.com/" aria-describedby="basic-addon12" />
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 form-group">
+                                                <label for="slack-input">Slack</label>
+                                                <div class="input-group input-group-merge">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon11">
+                                                            <i data-feather="slack" class="font-medium-2"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input id="slack-input" type="text" class="form-control" value="@adoptionism744" placeholder="https://www.slack.com/" aria-describedby="basic-addon11" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 d-flex flex-sm-row flex-column mt-2">
+                                                <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save Changes</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
+                                    <!-- users edit social form ends -->
                                 </div>
+                                <!-- Social Tab ends -->
                             </div>
                         </div>
-                        <!--/ Statistics Card -->
-                    </div>
-
-                    <div class="row match-height">
-                        <div class="col-lg-4 col-12">
-                            <div class="row match-height">
-                                <!-- Bar Chart - Orders -->
-                                <div class="col-lg-6 col-md-3 col-6">
-                                    <div class="card">
-                                        <div class="card-body pb-50">
-                                            <h6>Orders</h6>
-                                            <h2 class="font-weight-bolder mb-1">2,76k</h2>
-                                            <div id="statistics-order-chart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Bar Chart - Orders -->
-
-                                <!-- Line Chart - Profit -->
-                                <div class="col-lg-6 col-md-3 col-6">
-                                    <div class="card card-tiny-line-stats">
-                                        <div class="card-body pb-50">
-                                            <h6>Profit</h6>
-                                            <h2 class="font-weight-bolder mb-1">6,24k</h2>
-                                            <div id="statistics-profit-chart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Line Chart - Profit -->
-
-                                <!-- Earnings Card -->
-                                <div class="col-lg-12 col-md-6 col-12">
-                                    <div class="card earnings-card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <h4 class="card-title mb-1">Earnings</h4>
-                                                    <div class="font-small-2">This Month</div>
-                                                    <h5 class="mb-1">$4055.56</h5>
-                                                    <p class="card-text text-muted font-small-2">
-                                                        <span class="font-weight-bolder">68.2%</span><span> more earnings than last month.</span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div id="earnings-chart"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Earnings Card -->
-                            </div>
-                        </div>
-
-                        <!-- Revenue Report Card -->
-                        <div class="col-lg-8 col-12">
-                            <div class="card card-revenue-budget">
-                                <div class="row mx-0">
-                                    <div class="col-md-8 col-12 revenue-report-wrapper">
-                                        <div class="d-sm-flex justify-content-between align-items-center mb-3">
-                                            <h4 class="card-title mb-50 mb-sm-0">Revenue Report</h4>
-                                            <div class="d-flex align-items-center">
-                                                <div class="d-flex align-items-center mr-2">
-                                                    <span class="bullet bullet-primary font-small-3 mr-50 cursor-pointer"></span>
-                                                    <span>Earning</span>
-                                                </div>
-                                                <div class="d-flex align-items-center ml-75">
-                                                    <span class="bullet bullet-warning font-small-3 mr-50 cursor-pointer"></span>
-                                                    <span>Expense</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="revenue-report-chart"></div>
-                                    </div>
-                                    <div class="col-md-4 col-12 budget-wrapper">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                2020
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                                                <a class="dropdown-item" href="javascript:void(0);">2018</a>
-                                            </div>
-                                        </div>
-                                        <h2 class="mb-25">$25,852</h2>
-                                        <div class="d-flex justify-content-center">
-                                            <span class="font-weight-bolder mr-25">Budget:</span>
-                                            <span>56,800</span>
-                                        </div>
-                                        <div id="budget-chart"></div>
-                                        <button type="button" class="btn btn-primary">Increase Budget</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Revenue Report Card -->
-                    </div>
-
-                    <div class="row match-height">
-                        <!-- Company Table Card -->
-                        <div class="col-lg-8 col-12">
-                            <div class="card card-company-table">
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Company</th>
-                                                    <th>Category</th>
-                                                    <th>Views</th>
-                                                    <th>Revenue</th>
-                                                    <th>Sales</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/toolbox.svg" alt="Toolbar svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Dixons</div>
-                                                                <div class="font-small-2 text-muted">meguc@ruj.io</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-primary mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="monitor" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Technology</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">23.4k</span>
-                                                            <span class="font-small-2 text-muted">in 24 hours</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$891.2</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">68%</span>
-                                                            <i data-feather="trending-down" class="text-danger font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/parachute.svg" alt="Parachute svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Motels</div>
-                                                                <div class="font-small-2 text-muted">vecav@hodzi.co.uk</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-success mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="coffee" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Grocery</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">78k</span>
-                                                            <span class="font-small-2 text-muted">in 2 days</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$668.51</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">97%</span>
-                                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/brush.svg" alt="Brush svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Zipcar</div>
-                                                                <div class="font-small-2 text-muted">davcilse@is.gov</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-warning mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="watch" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Fashion</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">162</span>
-                                                            <span class="font-small-2 text-muted">in 5 days</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$522.29</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">62%</span>
-                                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/star.svg" alt="Star svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Owning</div>
-                                                                <div class="font-small-2 text-muted">us@cuhil.gov</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-primary mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="monitor" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Technology</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">214</span>
-                                                            <span class="font-small-2 text-muted">in 24 hours</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$291.01</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">88%</span>
-                                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/book.svg" alt="Book svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Cafés</div>
-                                                                <div class="font-small-2 text-muted">pudais@jife.com</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-success mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="coffee" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Grocery</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">208</span>
-                                                            <span class="font-small-2 text-muted">in 1 week</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$783.93</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">16%</span>
-                                                            <i data-feather="trending-down" class="text-danger font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/rocket.svg" alt="Rocket svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Kmart</div>
-                                                                <div class="font-small-2 text-muted">bipri@cawiw.com</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-warning mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="watch" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Fashion</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">990</span>
-                                                            <span class="font-small-2 text-muted">in 1 month</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$780.05</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">78%</span>
-                                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar rounded">
-                                                                <div class="avatar-content">
-                                                                    <img src="app-assets/images/icons/speaker.svg" alt="Speaker svg" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="font-weight-bolder">Payers</div>
-                                                                <div class="font-small-2 text-muted">luk@izug.io</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="avatar bg-light-warning mr-1">
-                                                                <div class="avatar-content">
-                                                                    <i data-feather="watch" class="font-medium-3"></i>
-                                                                </div>
-                                                            </div>
-                                                            <span>Fashion</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-weight-bolder mb-25">12.9k</span>
-                                                            <span class="font-small-2 text-muted">in 12 hours</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>$531.49</td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <span class="font-weight-bolder mr-1">42%</span>
-                                                            <i data-feather="trending-up" class="text-success font-medium-1"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Company Table Card -->
-
-                        <!-- Developer Meetup Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-developer-meetup">
-                                <div class="meetup-img-wrapper rounded-top text-center">
-                                    <img src="app-assets/images/illustration/email.svg" alt="Meeting Pic" height="170" />
-                                </div>
-                                <div class="card-body">
-                                    <div class="meetup-header d-flex align-items-center">
-                                        <div class="meetup-day">
-                                            <h6 class="mb-0">THU</h6>
-                                            <h3 class="mb-0">24</h3>
-                                        </div>
-                                        <div class="my-auto">
-                                            <h4 class="card-title mb-25">Developer Meetup</h4>
-                                            <p class="card-text mb-0">Meet world popular developers</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="avatar bg-light-primary rounded mr-1">
-                                            <div class="avatar-content">
-                                                <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0">Sat, May 25, 2020</h6>
-                                            <small>10:AM to 6:PM</small>
-                                        </div>
-                                    </div>
-                                    <div class="media mt-2">
-                                        <div class="avatar bg-light-primary rounded mr-1">
-                                            <div class="avatar-content">
-                                                <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="mb-0">Central Park</h6>
-                                            <small>Manhattan, New york City</small>
-                                        </div>
-                                    </div>
-                                    <div class="avatar-group">
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Billy Hopkins" class="avatar pull-up">
-                                            <img src="app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="33" height="33" />
-                                        </div>
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Amy Carson" class="avatar pull-up">
-                                            <img src="app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" width="33" height="33" />
-                                        </div>
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Brandon Miles" class="avatar pull-up">
-                                            <img src="app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" width="33" height="33" />
-                                        </div>
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Daisy Weber" class="avatar pull-up">
-                                            <img src="app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
-                                        </div>
-                                        <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Jenny Looper" class="avatar pull-up">
-                                            <img src="app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
-                                        </div>
-                                        <h6 class="align-self-center cursor-pointer ml-50 mb-0">+42</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Developer Meetup Card -->
-
-                        <!-- Browser States Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-browser-states">
-                                <div class="card-header">
-                                    <div>
-                                        <h4 class="card-title">Browser States</h4>
-                                        <p class="card-text font-small-2">Counter August 2020</p>
-                                    </div>
-                                    <div class="dropdown chart-dropdown">
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="browser-states">
-                                        <div class="media">
-                                            <img src="app-assets/images/icons/google-chrome.png" class="rounded mr-1" height="30" alt="Google Chrome" />
-                                            <h6 class="align-self-center mb-0">Google Chrome</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-weight-bold text-body-heading mr-1">54.4%</div>
-                                            <div id="browser-state-chart-primary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="media">
-                                            <img src="app-assets/images/icons/mozila-firefox.png" class="rounded mr-1" height="30" alt="Mozila Firefox" />
-                                            <h6 class="align-self-center mb-0">Mozila Firefox</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-weight-bold text-body-heading mr-1">6.1%</div>
-                                            <div id="browser-state-chart-warning"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="media">
-                                            <img src="app-assets/images/icons/apple-safari.png" class="rounded mr-1" height="30" alt="Apple Safari" />
-                                            <h6 class="align-self-center mb-0">Apple Safari</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-weight-bold text-body-heading mr-1">14.6%</div>
-                                            <div id="browser-state-chart-secondary"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="media">
-                                            <img src="app-assets/images/icons/internet-explorer.png" class="rounded mr-1" height="30" alt="Internet Explorer" />
-                                            <h6 class="align-self-center mb-0">Internet Explorer</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-weight-bold text-body-heading mr-1">4.2%</div>
-                                            <div id="browser-state-chart-info"></div>
-                                        </div>
-                                    </div>
-                                    <div class="browser-states">
-                                        <div class="media">
-                                            <img src="app-assets/images/icons/opera.png" class="rounded mr-1" height="30" alt="Opera Mini" />
-                                            <h6 class="align-self-center mb-0">Opera Mini</h6>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <div class="font-weight-bold text-body-heading mr-1">8.4%</div>
-                                            <div id="browser-state-chart-danger"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Browser States Card -->
-
-                        <!-- Goal Overview Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title">Goal Overview</h4>
-                                    <i data-feather="help-circle" class="font-medium-3 text-muted cursor-pointer"></i>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div id="goal-overview-radial-bar-chart" class="my-2"></div>
-                                    <div class="row border-top text-center mx-0">
-                                        <div class="col-6 border-right py-1">
-                                            <p class="card-text text-muted mb-0">Completed</p>
-                                            <h3 class="font-weight-bolder mb-0">786,617</h3>
-                                        </div>
-                                        <div class="col-6 py-1">
-                                            <p class="card-text text-muted mb-0">In Progress</p>
-                                            <h3 class="font-weight-bolder mb-0">13,561</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Goal Overview Card -->
-
-                        <!-- Transaction Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-transaction">
-                                <div class="card-header">
-                                    <h4 class="card-title">Transactions</h4>
-                                    <div class="dropdown chart-dropdown">
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="transaction-item">
-                                        <div class="media">
-                                            <div class="avatar bg-light-primary rounded">
-                                                <div class="avatar-content">
-                                                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="transaction-title">Wallet</h6>
-                                                <small>Starbucks</small>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bolder text-danger">- $74</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="media">
-                                            <div class="avatar bg-light-success rounded">
-                                                <div class="avatar-content">
-                                                    <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="transaction-title">Bank Transfer</h6>
-                                                <small>Add Money</small>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bolder text-success">+ $480</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="media">
-                                            <div class="avatar bg-light-danger rounded">
-                                                <div class="avatar-content">
-                                                    <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="transaction-title">Paypal</h6>
-                                                <small>Add Money</small>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bolder text-success">+ $590</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="media">
-                                            <div class="avatar bg-light-warning rounded">
-                                                <div class="avatar-content">
-                                                    <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="transaction-title">Mastercard</h6>
-                                                <small>Ordered Food</small>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bolder text-danger">- $23</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="media">
-                                            <div class="avatar bg-light-info rounded">
-                                                <div class="avatar-content">
-                                                    <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="transaction-title">Transfer</h6>
-                                                <small>Refund</small>
-                                            </div>
-                                        </div>
-                                        <div class="font-weight-bolder text-success">+ $98</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Transaction Card -->
                     </div>
                 </section>
-                <!-- Dashboard Ecommerce ends -->
+                <!-- users edit ends -->
 
             </div>
         </div>
@@ -1464,8 +1206,9 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -1474,7 +1217,8 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+    <script src="app-assets/js/scripts/pages/app-user-edit.js"></script>
+    <script src="app-assets/js/scripts/components/components-navs.js"></script>
     <!-- END: Page JS-->
 
     <script>

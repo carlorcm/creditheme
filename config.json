@@ -4,8 +4,8 @@
   "documentation": "documentation",
   "assets": "assets",
   "app_assets": "app-assets",
-  "assets_path": "../../../assets",
-  "app_assets_path": "../../../app-assets",
+  "assets_path": "assets",
+  "app_assets_path": "app-assets",
   "vendors_path": "./app-assets/vendors/",
   "destination": {
     "js": "app-assets/js",
