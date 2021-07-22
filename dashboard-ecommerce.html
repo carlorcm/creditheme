@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/apexcharts.css">
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/pickers/pickadate/pickadate.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -445,7 +447,7 @@
                             </div>
                           </div>
                         <!--/ Statistics Card -->
-                 <</div>
+                 </div>
 
                  <div class="row match-height">
                    <div class="col-lg-4 col-12">
@@ -551,18 +553,40 @@
                          <!-- Company Table Card -->
     
       <div class="card card-company-table">
-        <div class="card-body p-0">
+        <div class="card-body">
+          <div class="row justify-content-end">
+            <div class="col-3">
+              <div class="icon-search-wrapper">
+                  <div class="form-group input-group input-group-merge">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                      </div>
+                      <input type="text" class="form-control" id="icons-search" placeholder="Buscar...">
+                  </div>
+              </div>
+            </div>
+            
+            <div class="col-3">
+              <div class="icon-search-wrapper">
+                <div class="form-group input-group input-group-merge">
+                  <section id="flatpickr">
+                    <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table">              
               <thead>
                 <tr>
-                  <th>vendedor</th>
-                  <th>Inicio Cobro</th>
-                  <th>Visitas Esperadas</th>
-                  <th>Recaudo Pretendido</th>
-                  <th>Recaudo Actual</th>
-                  <th>Ultimo Acceso</th>
-                  <th>Auditoria</th>
+                  <th class="font-small-2">vendedor</th>
+                  <th class="font-small-2">Inicio Cobro</th>
+                  <th class="font-small-2">Visitas Esperadas</th>
+                  <th class="font-small-2">Recaudo Pretendido</th>
+                  <th class="font-small-2">Recaudo Actual</th>
+                  <th class="font-small-2">Ultimo Acceso</th>
+                  <th class="font-small-2">Auditoria</th>
                   
                 </tr>
               </thead>
@@ -749,7 +773,23 @@
 
 
               </tbody>
+            
             </table>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination mt-2">
+                  <li class="page-item prev-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                  <li class="page-item active" aria-current="page">
+                      <a class="page-link" href="javascript:void(0);">4</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">6</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0);">7</a></li>
+                  <li class="page-item next-item"><a class="page-link" href="javascript:void(0);"></a></li>
+              </ul>
+          </nav>
           </div>
         </div>
       </div>
@@ -760,21 +800,43 @@
                     <div class="row match-height">
                         <!-- Company Table Card -->
                         <div class="card card-company-table">
-                            <div class="card-body p-0">
+                            <div class="card-body">
+                              <div class="row justify-content-end">
+                                <div class="col-3">
+                                  <div class="icon-search-wrapper">
+                                      <div class="form-group input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                                          </div>
+                                          <input type="text" class="form-control" id="icons-search" placeholder="Buscar...">
+                                      </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-3">
+                                  <div class="icon-search-wrapper">
+                                    <div class="form-group input-group input-group-merge">
+                                      <section id="flatpickr">
+                                        <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                                      </section>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                               <div class="table-responsive">
                                 <table class="table">
                                   <thead>
                                     <tr>
-                                      <th>vendedor</th>
-                                      <th>Base del dia</th>
-                                      <th># Visitas</th>
-                                      <th>Recaudo Actual</th>
-                                      <th>Retiros</th>
-                                      <th># ventas</th>
-                                      <th>Total ventas</th>
-                                      <th>Caja final</th>
-                                      <th>Estado</th>
-                                      <th>Opción</th>
+                                      <th class="font-small-2">vendedor</th>
+                                      <th class="font-small-2">Base del dia</th>
+                                      <th class="font-small-2"># Visitas</th>
+                                      <th class="font-small-2">Recaudo Actual</th>
+                                      <th class="font-small-2">Retiros</th>
+                                      <th class="font-small-2"># ventas</th>
+                                      <th class="font-small-2">Total ventas</th>
+                                      <th class="font-small-2">Caja final</th>
+                                      <th class="font-small-2">Estado</th>
+                                      <th class="font-small-2">Opción</th>
                                       
                                     </tr>
                                   </thead>
@@ -1038,6 +1100,21 @@
                     
                                   </tbody>
                                 </table>
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination mt-2">
+                                      <li class="page-item prev-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                                      <li class="page-item active" aria-current="page">
+                                          <a class="page-link" href="javascript:void(0);">4</a>
+                                      </li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">6</a></li>
+                                      <li class="page-item"><a class="page-link" href="javascript:void(0);">7</a></li>
+                                      <li class="page-item next-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                                  </ul>
+                              </nav>
                               </div>
                             </div>
                           </div>
@@ -1246,6 +1323,11 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="app-assets/vendors/js/vendors.min.js"></script>
+     <script src="app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+     <script src="app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+     <script src="app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+     <script src="app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
+     <script src="app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>     
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
